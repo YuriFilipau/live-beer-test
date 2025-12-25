@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:live_beer/app/design/design_tokens.dart';
+
+class BottomNavigationScaffold extends StatelessWidget {
+  final StatefulNavigationShell shell;
+
+  const BottomNavigationScaffold({super.key, required this.shell});
+
+  void _onTap(int index) =>
+      shell.goBranch(index, initialLocation: index == shell.currentIndex);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: shell,
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.fromLTRB(DT.s9, DT.s5, DT.s9, 0),
+        height: 95,
+        color: DT.bgDarkGrey,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _NavigationItem(
+              title: "Главная",
+              icon: "assets/icons/home.svg",
+              isSelected: shell.currentIndex == 0,
+              onTap: () => _onTap(0),
+            ),
+            _NavigationItem(
+              title: "Информация",
+              icon: "assets/icons/info.svg",
+              isSelected: shell.currentIndex == 1,
+              onTap: () => _onTap(1),
+            ),
+            _NavigationItem(
+              title: "Магазины",
+              icon: "assets/icons/shopping-cart.svg",
+              isSelected: shell.currentIndex == 2,
+              onTap: () => _onTap(2),
+            ),
+            _NavigationItem(
+              title: "Профиль",
+              icon: "assets/icons/user.svg",
+              isSelected: shell.currentIndex == 3,
+              onTap: () => _onTap(3),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NavigationItem extends StatelessWidget {
+  final String icon;
+  final bool isSelected;
+  final VoidCallback onTap;
+  final String title;
+
+  const _NavigationItem({
+    required this.icon,
+    required this.isSelected,
+    required this.onTap,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox(
+        height: 50,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SvgPicture.asset(
+              icon,
+              colorFilter: ColorFilter.mode(
+                isSelected
+                    ? DT.buttonYellow
+                    : DT.bgWhite.withValues(alpha: 0.5),
+                BlendMode.srcIn,
+              ),
+              width: DT.s9,
+              height: DT.s9,
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: DT.s5,
+                color: isSelected
+                    ? DT.buttonYellow
+                    : DT.bgWhite.withValues(alpha: 0.5),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
