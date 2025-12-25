@@ -1,16 +1,20 @@
-# live_beer
+# Live beer
 
-A new Flutter project.
+## Stack
 
-## Getting Started
+[**Dart**](https://dart.dev/), [**Flutter**](https://flutter.dev/),
+[**Go Router**](https://pub.dev/packages/go_router), [**Flutter_gen**](https://pub.dev/packages/flutter_gen)
 
-This project is a starting point for a Flutter application.
+## Flutter Version Management (FVM)
 
-A few resources to get you started if this is your first Flutter project:
+This project uses [**Flutter_gen**](https://pub.dev/packages/flutter_gen) to generate assets.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Install Flutter_gen:
+```bash
+flutter pub get
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Use Flutter_gen:
+```bash
+dart run build_runner build
+```
