@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:live_beer/app/constants/enums.dart';
 import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/gen/assets.gen.dart';
 
 class NewsButton extends StatelessWidget {
   final String title;
@@ -62,8 +63,8 @@ class NewsButton extends StatelessWidget {
               right: 0,
               child: SvgPicture.asset(
                 type == NewsButtonType.news
-                    ? 'assets/icons/news.svg'
-                    : 'assets/icons/discount.svg',
+                    ? Assets.icons.news
+                    : Assets.icons.discount,
               ),
             ),
           ],

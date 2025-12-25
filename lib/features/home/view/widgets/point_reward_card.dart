@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/gen/assets.gen.dart';
 
 class PointsRewardCard extends StatelessWidget {
   final VoidCallback onTap;
@@ -59,13 +60,13 @@ class PointsRewardCard extends StatelessWidget {
           SizedBox(
             width: 160,
             height: 132,
-            child: Image.asset("assets/images/beer.png"),
+            child: Image.asset(Assets.images.beer.path),
           ),
           GestureDetector(
             onTap: onTap,
             child: Transform.translate(
               offset: const Offset(5, -5),
-              child: SvgPicture.asset("assets/icons/details.svg"),
+              child: SvgPicture.asset(Assets.icons.details),
             ),
           ),
         ],

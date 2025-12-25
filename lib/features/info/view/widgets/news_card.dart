@@ -39,9 +39,7 @@ class NewsCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-
             const SizedBox(width: DT.s7),
-
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,7 +56,6 @@ class NewsCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     softWrap: true,
                   ),
-
                   Text(
                     date,
                     style: TextStyle(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:live_beer/app/constants/enums.dart';
 import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/gen/assets.gen.dart';
 
 class ModalBottomSheet extends StatelessWidget {
   final String title;
@@ -45,7 +46,7 @@ class ModalBottomSheet extends StatelessWidget {
                       spacing: 5,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset("assets/icons/back.svg"),
+                        SvgPicture.asset(Assets.icons.back),
                         const Text(
                           'Назад',
                           style: TextStyle(color: DT.textLink, fontSize: 17),
@@ -56,7 +57,6 @@ class ModalBottomSheet extends StatelessWidget {
                 ],
               ),
             ),
-
             Expanded(
               child: Material(
                 color: DT.bgWhite,
@@ -100,8 +100,8 @@ class ModalBottomSheet extends StatelessWidget {
                                 children: [
                                   SvgPicture.asset(
                                     type == NewsButtonType.news
-                                        ? 'assets/icons/mic.svg'
-                                        : 'assets/icons/discount_small.svg',
+                                        ? Assets.icons.mic
+                                        : Assets.icons.discountSmall,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: DT.s1),

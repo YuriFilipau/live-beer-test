@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/gen/assets.gen.dart';
 import 'package:live_beer/shared/widgets/button.dart';
 import 'package:live_beer/shared/widgets/text_input_field.dart';
 
@@ -57,7 +58,7 @@ class _ProfileState extends State<Profile> {
               height: 250,
               width: double.infinity,
               child: SvgPicture.asset(
-                'assets/icons/large_berry.svg',
+                Assets.icons.largeBerry,
                 fit: BoxFit.cover,
               ),
             ),
@@ -171,7 +172,7 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                       SvgPicture.asset(
-                        "assets/icons/log_out.svg",
+                        Assets.icons.logOut,
                         width: 44,
                         height: 44,
                       ),

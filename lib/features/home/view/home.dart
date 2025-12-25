@@ -81,6 +81,7 @@ class Home extends StatelessWidget {
                   score: 3017,
                   onTap: () {
                     showDialog(
+                      barrierDismissible: false,
                       barrierColor: Colors.black.withValues(alpha: 0.6),
                       context: context,
                       builder: (BuildContext context) => const DetailsDialog(),

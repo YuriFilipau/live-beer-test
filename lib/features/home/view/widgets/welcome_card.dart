@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:barcode/barcode.dart';
 import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/gen/assets.gen.dart';
 
 class WelcomeCard extends StatelessWidget {
   final String barcodeData;
@@ -28,7 +29,7 @@ class WelcomeCard extends StatelessWidget {
               children: [
                 SizedBox.expand(
                   child: SvgPicture.asset(
-                    "assets/icons/berry.svg",
+                    Assets.icons.berry,
                     fit: BoxFit.cover,
                   ),
                 ),

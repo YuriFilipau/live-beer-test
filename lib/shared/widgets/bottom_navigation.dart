@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/gen/assets.gen.dart';
 
 class BottomNavigationScaffold extends StatelessWidget {
   final StatefulNavigationShell shell;
@@ -25,25 +26,25 @@ class BottomNavigationScaffold extends StatelessWidget {
           children: [
             _NavigationItem(
               title: "Главная",
-              icon: "assets/icons/home.svg",
+              icon: Assets.icons.home,
               isSelected: shell.currentIndex == 0,
               onTap: () => _onTap(0),
             ),
             _NavigationItem(
               title: "Информация",
-              icon: "assets/icons/info.svg",
+              icon: Assets.icons.info,
               isSelected: shell.currentIndex == 1,
               onTap: () => _onTap(1),
             ),
             _NavigationItem(
               title: "Магазины",
-              icon: "assets/icons/shopping-cart.svg",
+              icon: Assets.icons.shoppingCart,
               isSelected: shell.currentIndex == 2,
               onTap: () => _onTap(2),
             ),
             _NavigationItem(
               title: "Профиль",
-              icon: "assets/icons/user.svg",
+              icon: Assets.icons.user,
               isSelected: shell.currentIndex == 3,
               onTap: () => _onTap(3),
             ),

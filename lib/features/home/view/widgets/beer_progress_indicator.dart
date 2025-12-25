@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/gen/assets.gen.dart';
 
 class BeerProgressIndicator extends StatelessWidget {
   final int filledLiters;
@@ -20,8 +21,8 @@ class BeerProgressIndicator extends StatelessWidget {
         for (int i = 0; i < totalLiters - 1; i++) ...[
           SvgPicture.asset(
             i < filledLiters
-                ? 'assets/icons/active_beer_cup.svg'
-                : 'assets/icons/beer_cup.svg',
+                ? Assets.icons.activeBeerCup
+                : Assets.icons.beerCup,
             width: 24,
             height: 54,
           ),
@@ -32,8 +33,8 @@ class BeerProgressIndicator extends StatelessWidget {
 
         SvgPicture.asset(
           filledLiters == totalLiters
-              ? 'assets/icons/active_beer_cup.svg'
-              : 'assets/icons/prize_beer_cup.svg',
+              ? Assets.icons.activeBeerCup
+              : Assets.icons.prizeBeerCup,
           width: 24,
           height: 54,
         ),
