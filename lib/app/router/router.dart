@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:live_beer/features/home/view/home.dart';
-import 'package:live_beer/features/info/view/info.dart';
-import 'package:live_beer/features/profile/view/profile.dart';
-import 'package:live_beer/features/shops/view/shops.dart';
+import 'package:live_beer/features/home/view/home_screen.dart';
+import 'package:live_beer/features/info/view/info_screen.dart';
+import 'package:live_beer/features/profile/view/profile_screen.dart';
+import 'package:live_beer/features/shops/view/shops_screen.dart';
 import 'package:live_beer/shared/widgets/bottom_navigation.dart';
 
 enum AppRouter { home, info, shops, profile }
