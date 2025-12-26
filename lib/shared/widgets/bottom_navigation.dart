@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/app/constants/app_styles.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 
 class BottomNavigationScaffold extends StatelessWidget {
@@ -17,9 +17,14 @@ class BottomNavigationScaffold extends StatelessWidget {
     return Scaffold(
       body: shell,
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.fromLTRB(DT.s9, DT.s5, DT.s9, 0),
+        padding: const EdgeInsets.fromLTRB(
+          AppStyles.s24,
+          AppStyles.s12,
+          AppStyles.s24,
+          0,
+        ),
         height: 95,
-        color: DT.bgDarkGrey,
+        color: AppStyles.bgDarkGrey,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,20 +86,20 @@ class _NavigationItem extends StatelessWidget {
               icon,
               colorFilter: ColorFilter.mode(
                 isSelected
-                    ? DT.buttonYellow
-                    : DT.bgWhite.withValues(alpha: 0.5),
+                    ? AppStyles.buttonYellow
+                    : AppStyles.bgWhite.withValues(alpha: 0.5),
                 BlendMode.srcIn,
               ),
-              width: DT.s9,
-              height: DT.s9,
+              width: AppStyles.s24,
+              height: AppStyles.s24,
             ),
             Text(
               title,
               style: TextStyle(
-                fontSize: DT.s5,
+                fontSize: AppStyles.s12,
                 color: isSelected
-                    ? DT.buttonYellow
-                    : DT.bgWhite.withValues(alpha: 0.5),
+                    ? AppStyles.buttonYellow
+                    : AppStyles.bgWhite.withValues(alpha: 0.5),
               ),
             ),
           ],

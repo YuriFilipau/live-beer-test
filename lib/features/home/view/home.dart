@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:live_beer/app/constants/enums.dart';
-import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/data/test_data/test_news.dart';
 import 'package:live_beer/app/router/router.dart';
 import 'package:live_beer/features/home/view/widgets/beer_reward_card.dart';
 import 'package:live_beer/features/home/view/widgets/details_dialog.dart';
@@ -9,54 +10,26 @@ import 'package:live_beer/features/home/view/widgets/news_button.dart';
 import 'package:live_beer/features/home/view/widgets/point_reward_card.dart';
 import 'package:live_beer/features/home/view/widgets/welcome_card.dart';
 
-class Home extends StatelessWidget {
-  final List<Map<String, dynamic>> newsData = [
-    {
-      'title': 'Новые сорта крафта уже в наличии в магазинах',
-      'date': '20.01.2022',
-      'type': NewsButtonType.news,
-    },
-    {
-      'title': 'Нам 10 лет повышаем скидку до 10% на всё!',
-      'date': '15.03.2022',
-      'type': NewsButtonType.discounts,
-    },
-    {
-      'title': 'Новые сорта крафта уже в наличии в магазинах',
-      'date': '20.01.2022',
-      'type': NewsButtonType.news,
-    },
-    {
-      'title': 'Нам 10 лет повышаем скидку до 10% на всё!',
-      'date': '15.03.2022',
-      'type': NewsButtonType.discounts,
-    },
-    {
-      'title': 'Новые сорта крафта уже в наличии в магазинах',
-      'date': '20.01.2022',
-      'type': NewsButtonType.news,
-    },
-    {
-      'title': 'Нам 10 лет повышаем скидку до 10% на всё!',
-      'date': '15.03.2022',
-      'type': NewsButtonType.discounts,
-    },
-  ];
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
-  Home({super.key});
+  List<Map<String, dynamic>> _getCurrentData() {
+    return NewsData.getAllAsMap();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final filteredData = _getCurrentData();
     return SafeArea(
       child: Scaffold(
-        backgroundColor: DT.bgGrey,
+        backgroundColor: AppStyles.bgGrey,
         body: SingleChildScrollView(
           child: Column(
             children: [
               const Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: DT.s7,
-                  vertical: DT.s3,
+                  horizontal: AppStyles.s16,
+                  vertical: AppStyles.s8,
                 ),
                 child: WelcomeCard(
                   barcodeData: "1234567010356443",
@@ -65,17 +38,17 @@ class Home extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.only(
-                  left: DT.s7,
-                  right: DT.s7,
-                  bottom: DT.s2,
+                  left: AppStyles.s16,
+                  right: AppStyles.s16,
+                  bottom: AppStyles.s6,
                 ),
                 child: BeerRewardCard(filledLiters: 8, totalLiters: 10),
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: DT.s7,
-                  right: DT.s7,
-                  bottom: DT.s9,
+                  left: AppStyles.s16,
+                  right: AppStyles.s16,
+                  bottom: AppStyles.s24,
                 ),
                 child: PointsRewardCard(
                   score: 3017,
@@ -91,9 +64,9 @@ class Home extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: DT.s7,
-                  right: DT.s7,
-                  bottom: DT.s7,
+                  left: AppStyles.s16,
+                  right: AppStyles.s16,
+                  bottom: AppStyles.s16,
                 ),
                 child: GestureDetector(
                   onTap: () {
@@ -105,25 +78,28 @@ class Home extends StatelessWidget {
                       Text(
                         "Будь в курсе",
                         style: TextStyle(
-                          fontSize: DT.s9,
+                          fontSize: AppStyles.s24,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      Icon(Icons.arrow_forward, size: DT.s9),
+                      Icon(Icons.arrow_forward, size: AppStyles.s24),
                     ],
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: DT.s7, bottom: DT.s7),
+                padding: const EdgeInsets.only(
+                  left: AppStyles.s16,
+                  bottom: AppStyles.s16,
+                ),
                 child: SizedBox(
                   height: 132,
                   child: ListView.separated(
-                    padding: const EdgeInsets.only(right: DT.s7),
+                    padding: const EdgeInsets.only(right: AppStyles.s16),
                     scrollDirection: Axis.horizontal,
-                    itemCount: newsData.length,
+                    itemCount: filteredData.length,
                     itemBuilder: (context, index) {
-                      final item = newsData[index];
+                      final item = filteredData[index];
                       return NewsButton(
                         onTap: () {},
                         title: item['title'] as String,
@@ -132,7 +108,7 @@ class Home extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return const SizedBox(width: DT.s3);
+                      return const SizedBox(width: AppStyles.s8);
                     },
                   ),
                 ),

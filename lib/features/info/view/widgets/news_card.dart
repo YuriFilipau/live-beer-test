@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/app/constants/app_styles.dart';
 
 class NewsCard extends StatelessWidget {
   final String image;
@@ -21,16 +21,16 @@ class NewsCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: DT.buttonYellow,
-          borderRadius: BorderRadius.circular(DT.radius),
+          color: AppStyles.buttonYellow,
+          borderRadius: BorderRadius.circular(AppStyles.radius),
         ),
         height: 96,
-        padding: const EdgeInsets.all(DT.s7),
+        padding: const EdgeInsets.all(AppStyles.s16),
         child: Row(
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(DT.radius),
+                borderRadius: BorderRadius.circular(AppStyles.radius),
               ),
               child: Image.asset(
                 image,
@@ -39,7 +39,7 @@ class NewsCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(width: DT.s7),
+            const SizedBox(width: AppStyles.s16),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +48,7 @@ class NewsCard extends StatelessWidget {
                   Text(
                     title,
                     style: const TextStyle(
-                      fontSize: DT.s7,
+                      fontSize: AppStyles.s16,
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
@@ -59,9 +59,9 @@ class NewsCard extends StatelessWidget {
                   Text(
                     date,
                     style: TextStyle(
-                      fontSize: DT.s5,
+                      fontSize: AppStyles.s12,
                       fontWeight: FontWeight.w300,
-                      color: DT.text.withValues(alpha: 0.8),
+                      color: AppStyles.text.withValues(alpha: 0.8),
                     ),
                   ),
                 ],

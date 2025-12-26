@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/app/constants/app_styles.dart';
 
 class Button extends StatelessWidget {
   final String title;
@@ -13,15 +13,15 @@ class Button extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: DT.buttonYellow,
-          borderRadius: BorderRadius.circular(DT.radius),
+          color: AppStyles.buttonYellow,
+          borderRadius: BorderRadius.circular(AppStyles.radius),
         ),
         height: 56,
         child: Center(
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: DT.s7,
+              fontSize: AppStyles.s16,
               fontWeight: FontWeight.w600,
             ),
           ),

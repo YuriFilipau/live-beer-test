@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:live_beer/app/constants/enums.dart';
-import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/app/constants/app_styles.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 
 class ModalBottomSheet extends StatelessWidget {
   final String title;
   final String date;
-  final String? image;
+  final String image;
   final String description;
   final NewsButtonType type;
 
@@ -27,20 +27,25 @@ class ModalBottomSheet extends StatelessWidget {
       bottom: false,
       child: Container(
         decoration: const BoxDecoration(
-          color: DT.bgWhite,
+          color: AppStyles.bgWhite,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(DT.radius),
-            topRight: Radius.circular(DT.radius),
+            topLeft: Radius.circular(AppStyles.radius),
+            topRight: Radius.circular(AppStyles.radius),
           ),
         ),
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.fromLTRB(DT.s7, DT.s3, DT.s7, DT.s3),
+              padding: const EdgeInsets.fromLTRB(
+                AppStyles.s16,
+                AppStyles.s8,
+                AppStyles.s16,
+                AppStyles.s8,
+              ),
               child: Row(
                 children: [
                   CupertinoButton(
-                    padding: const EdgeInsets.only(top: DT.s9),
+                    padding: const EdgeInsets.only(top: AppStyles.s24),
                     onPressed: () => Navigator.of(context).pop(),
                     child: Row(
                       spacing: 5,
@@ -49,7 +54,10 @@ class ModalBottomSheet extends StatelessWidget {
                         SvgPicture.asset(Assets.icons.back),
                         const Text(
                           'Назад',
-                          style: TextStyle(color: DT.textLink, fontSize: 17),
+                          style: TextStyle(
+                            color: AppStyles.textLink,
+                            fontSize: AppStyles.s17,
+                          ),
                         ),
                       ],
                     ),
@@ -59,13 +67,13 @@ class ModalBottomSheet extends StatelessWidget {
             ),
             Expanded(
               child: Material(
-                color: DT.bgWhite,
+                color: AppStyles.bgWhite,
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(
-                    DT.s12,
-                    DT.s7,
-                    DT.s12,
-                    DT.s10,
+                    AppStyles.s20,
+                    AppStyles.s16,
+                    AppStyles.s20,
+                    AppStyles.s32,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,27 +81,27 @@ class ModalBottomSheet extends StatelessWidget {
                       Text(
                         title,
                         style: const TextStyle(
-                          fontSize: DT.s10,
+                          fontSize: AppStyles.s32,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
 
                       Padding(
                         padding: const EdgeInsets.only(
-                          top: DT.s3,
-                          bottom: DT.s7,
+                          top: AppStyles.s8,
+                          bottom: AppStyles.s16,
                         ),
                         child: Row(
                           children: [
                             Container(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: DT.s3,
-                                vertical: DT.s1,
+                                horizontal: AppStyles.s8,
+                                vertical: AppStyles.s4,
                               ),
                               decoration: BoxDecoration(
-                                color: DT.buttonYellow,
+                                color: AppStyles.buttonYellow,
                                 borderRadius: BorderRadius.circular(
-                                  DT.labelRadius,
+                                  AppStyles.labelRadius,
                                 ),
                               ),
                               child: Row(
@@ -104,13 +112,15 @@ class ModalBottomSheet extends StatelessWidget {
                                         : Assets.icons.discountSmall,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: DT.s1),
+                                    padding: const EdgeInsets.only(
+                                      left: AppStyles.s4,
+                                    ),
                                     child: Text(
                                       type == NewsButtonType.news
                                           ? 'Новость'
                                           : 'Акция',
                                       style: const TextStyle(
-                                        fontSize: DT.s5,
+                                        fontSize: AppStyles.s12,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -119,22 +129,24 @@ class ModalBottomSheet extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: DT.s3),
+                              padding: const EdgeInsets.only(
+                                left: AppStyles.s8,
+                              ),
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
-                                  horizontal: DT.s3,
-                                  vertical: DT.s1,
+                                  horizontal: AppStyles.s8,
+                                  vertical: AppStyles.s4,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: DT.buttonYellow,
+                                  color: AppStyles.buttonYellow,
                                   borderRadius: BorderRadius.circular(
-                                    DT.labelRadius,
+                                    AppStyles.labelRadius,
                                   ),
                                 ),
                                 child: Text(
                                   date,
                                   style: const TextStyle(
-                                    fontSize: DT.s5,
+                                    fontSize: AppStyles.s12,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -143,22 +155,21 @@ class ModalBottomSheet extends StatelessWidget {
                           ],
                         ),
                       ),
-                      if (image != null)
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(DT.radius),
-                          child: Image.asset(
-                            image ?? '',
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                          ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(AppStyles.radius),
+                        child: Image.asset(
+                          image,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
                         ),
-                      const SizedBox(height: DT.s12),
+                      ),
+                      const SizedBox(height: AppStyles.s20),
                       Text(
                         description,
                         style: const TextStyle(
-                          fontSize: DT.s7,
+                          fontSize: AppStyles.s16,
                           height: 1.3,
-                          color: DT.text,
+                          color: AppStyles.text,
                         ),
                       ),
                     ],

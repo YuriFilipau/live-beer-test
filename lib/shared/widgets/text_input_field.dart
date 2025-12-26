@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:live_beer/app/design/design_tokens.dart';
+import 'package:live_beer/app/constants/app_styles.dart';
 
-class TextInputField extends StatelessWidget {
+class TextInputField extends StatefulWidget {
   final String title;
   final TextEditingController? controller;
-  final String? labelText;
   final String? hintText;
   final String? initialValue;
   final TextInputType? keyboardType;
@@ -14,16 +13,18 @@ class TextInputField extends StatelessWidget {
   final int? maxLength;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
+  final void Function(String)? onSubmit;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final EdgeInsetsGeometry? contentPadding;
   final bool autoFocus;
   final TextInputAction? textInputAction;
+  final String? errorText;
+  final bool hasError;
 
   const TextInputField({
     super.key,
     this.controller,
-    this.labelText,
     this.hintText,
     this.initialValue,
     this.keyboardType,
@@ -33,67 +34,142 @@ class TextInputField extends StatelessWidget {
     this.maxLength,
     this.validator,
     this.onChanged,
+    this.onSubmit,
     this.prefixIcon,
     this.suffixIcon,
     this.contentPadding,
     this.autoFocus = false,
     this.textInputAction,
+    this.errorText,
+    this.hasError = false,
     required this.title,
   });
 
   @override
+  State<TextInputField> createState() => _TextInputFieldState();
+}
+
+class _TextInputFieldState extends State<TextInputField> {
+  late TextEditingController _controller;
+  late FocusNode _focusNode;
+  String? _errorText;
+  bool _isFocused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        widget.controller ?? TextEditingController(text: widget.initialValue);
+    _focusNode = FocusNode();
+    _focusNode.addListener(_onFocusChange);
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    if (widget.controller == null) {
+      _controller.dispose();
+    }
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _onFocusChange() {
+    setState(() {
+      _isFocused = _focusNode.hasFocus;
+    });
+  }
+
+  void _validate(String value) {
+    if (widget.validator != null) {
+      final error = widget.validator!(value);
+      setState(() {
+        _errorText = error;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: 5,
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: DT.s1,
       children: [
         Text(
-          title,
+          widget.title,
           style: const TextStyle(
-            color: DT.textLiteGrey,
+            color: AppStyles.textLiteGrey,
+            fontSize: AppStyles.s14,
           ),
         ),
-        TextFormField(
-          controller: controller,
-          initialValue: initialValue,
-          keyboardType: keyboardType,
-          obscureText: obscureText,
-          enabled: enabled,
-          maxLines: maxLines,
-          maxLength: maxLength,
-          validator: validator,
-          onChanged: onChanged,
-          autofocus: autoFocus,
-          textInputAction: textInputAction,
-          style: const TextStyle(fontSize: 17, color: Colors.black),
-          decoration: InputDecoration(
-            hintStyle: const TextStyle(color: DT.textLiteGrey),
-            labelText: labelText,
-            hintText: hintText,
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-            contentPadding: contentPadding ?? const EdgeInsets.all(DT.s6),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(DT.radius),
-              borderSide: const BorderSide(color: DT.errorBorder),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppStyles.radius),
+            border: Border.all(color: _getBorderColor()),
+            color: widget.enabled ? Colors.white : AppStyles.enabledBorder,
+          ),
+          child: TextField(
+            controller: _controller,
+            focusNode: _focusNode,
+            keyboardType: widget.keyboardType,
+            obscureText: widget.obscureText,
+            enabled: widget.enabled,
+            maxLines: widget.maxLines,
+            maxLength: widget.maxLength,
+            onChanged: (value) {
+              _validate(value);
+              widget.onChanged?.call(value);
+            },
+            onSubmitted: (value) {
+              widget.onSubmit?.call(value);
+            },
+            autofocus: widget.autoFocus,
+            textInputAction: widget.textInputAction,
+            style: const TextStyle(
+              fontSize: AppStyles.s17,
+              color: AppStyles.text,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(DT.radius),
-              borderSide: const BorderSide(color: DT.enabledBorder),
+            decoration: InputDecoration(
+              hintText: widget.hintText,
+              prefixIcon: widget.prefixIcon,
+              suffixIcon: widget.suffixIcon,
+              contentPadding:
+                  widget.contentPadding ?? const EdgeInsets.all(AppStyles.s14),
+              border: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+              hintStyle: const TextStyle(color: AppStyles.textLiteGrey),
+              counterText: '',
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(DT.radius),
-              borderSide: const BorderSide(color: DT.focusedBorder),
-            ),
-            disabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(DT.radius),
-              borderSide: BorderSide.none,
-            ),
-            filled: true,
-            fillColor: enabled ? Colors.white : DT.enabledBorder,
           ),
         ),
+        if ((_errorText != null && _errorText!.isNotEmpty) ||
+            (widget.hasError &&
+                widget.errorText != null &&
+                widget.errorText!.isNotEmpty))
+          _buildErrorText(widget.errorText ?? _errorText!),
       ],
+    );
+  }
+
+  Color _getBorderColor() {
+    if (widget.hasError || _errorText != null) {
+      return AppStyles.errorBorder;
+    }
+    if (_isFocused) {
+      return AppStyles.focusedBorder;
+    }
+    return AppStyles.enabledBorder;
+  }
+
+  Widget _buildErrorText(String error) {
+    return Text(
+      error,
+      style: const TextStyle(
+        color: AppStyles.errorBorder,
+        fontSize: AppStyles.s14,
+      ),
     );
   }
 }

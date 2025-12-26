@@ -21,7 +21,7 @@ GoRouter buildRouter() {
                 path: '/home',
                 name: AppRouter.home.name,
                 pageBuilder: (context, state) =>
-                    NoTransitionPage(child: Home()),
+                    NoTransitionPage(child: HomeScreen()),
               ),
             ],
           ),
@@ -31,7 +31,7 @@ GoRouter buildRouter() {
                 path: '/info',
                 name: AppRouter.info.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: Info()),
+                    const NoTransitionPage(child: InfoScreen()),
               ),
             ],
           ),
@@ -41,7 +41,7 @@ GoRouter buildRouter() {
                 path: '/shops',
                 name: AppRouter.shops.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: Shops()),
+                    const NoTransitionPage(child: ShopsScreen()),
               ),
             ],
           ),
@@ -51,7 +51,7 @@ GoRouter buildRouter() {
                 path: '/profile',
                 name: AppRouter.profile.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: Profile()),
+                    const NoTransitionPage(child: ProfileScreen()),
               ),
             ],
           ),
