@@ -5,8 +5,6 @@
 [**Dart**](https://dart.dev/), [**Flutter**](https://flutter.dev/),
 [**Go Router**](https://pub.dev/packages/go_router), [**Flutter_gen**](https://pub.dev/packages/flutter_gen)
 
-## Flutter Version Management (FVM)
-
 This project uses [**Flutter_gen**](https://pub.dev/packages/flutter_gen) to generate assets.
 
 1. Install Flutter_gen:
