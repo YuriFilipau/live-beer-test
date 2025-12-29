@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/features/home/view/widgets/beer_progress_indicator.dart';
 
 class BeerRewardCard extends StatelessWidget {
@@ -16,18 +17,18 @@ class BeerRewardCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(
-        AppStyles.s24,
-        AppStyles.s16,
-        AppStyles.s10,
-        AppStyles.s14,
+        AppSizes.s24,
+        AppSizes.s16,
+        AppSizes.s10,
+        AppSizes.s14,
       ),
       height: 152,
       decoration: BoxDecoration(
         color: Colors.black,
-        borderRadius: BorderRadius.circular(AppStyles.radius),
+        borderRadius: BorderRadius.circular(AppSizes.radius),
       ),
       child: Column(
-        spacing: AppStyles.s12,
+        spacing: AppSizes.s12,
         children: [
           BeerProgressIndicator(
             filledLiters: filledLiters,
@@ -43,8 +44,8 @@ class BeerRewardCard extends StatelessWidget {
                   Text(
                     "$filledLiters/$totalLiters",
                     style: const TextStyle(
-                      color: AppStyles.bgWhite,
-                      fontSize: AppStyles.s32,
+                      color: AppColors.bgWhite,
+                      fontSize: AppSizes.s32,
                       fontWeight: FontWeight.w800,
                       height: 1,
                     ),
@@ -52,15 +53,15 @@ class BeerRewardCard extends StatelessWidget {
                   const Text(
                     "Накоплено литров",
                     style: TextStyle(
-                      color: AppStyles.bgWhite,
-                      fontSize: AppStyles.s16,
+                      color: AppColors.bgWhite,
+                      fontSize: AppSizes.s16,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppStyles.s16),
+                padding: const EdgeInsets.symmetric(horizontal: AppSizes.s16),
                 child: SizedBox(
                   height: 41,
                   child: VerticalDivider(
@@ -75,7 +76,7 @@ class BeerRewardCard extends StatelessWidget {
                   "Копите литры и получайте пиво бесплатно",
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.7),
-                    fontSize: AppStyles.s14,
+                    fontSize: AppSizes.s14,
                     height: 1.2,
                   ),
                   maxLines: 3,

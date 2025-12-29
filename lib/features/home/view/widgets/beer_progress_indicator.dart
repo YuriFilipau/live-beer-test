@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 
 class BeerProgressIndicator extends StatelessWidget {
@@ -26,10 +26,10 @@ class BeerProgressIndicator extends StatelessWidget {
             width: 24,
             height: 54,
           ),
-          if (i < totalLiters - 2) const SizedBox(width: AppStyles.s8),
+          if (i < totalLiters - 2) const SizedBox(width: AppSizes.s8),
         ],
 
-        const SizedBox(width: AppStyles.s8),
+        const SizedBox(width: AppSizes.s8),
 
         SvgPicture.asset(
           filledLiters == totalLiters

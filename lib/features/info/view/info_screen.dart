@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:live_beer/app/constants/enums.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/app/data/test_data/test_news.dart';
 import 'package:live_beer/features/info/view/widgets/modal_bottom_sheet.dart';
 import 'package:live_beer/features/info/view/widgets/news_card.dart';
@@ -25,7 +26,7 @@ class _InfoScreenState extends State<InfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppStyles.bgWhite,
+      backgroundColor: AppColors.bgWhite,
       body: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -49,20 +50,20 @@ class _InfoScreenState extends State<InfoScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: AppStyles.s24),
+                    padding: EdgeInsets.symmetric(horizontal: AppSizes.s24),
                     child: Text(
                       "Информация",
                       style: TextStyle(
-                        fontSize: AppStyles.s36,
+                        fontSize: AppSizes.s36,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(
-                      AppStyles.s24,
-                      AppStyles.s16,
-                      AppStyles.s24,
+                      AppSizes.s24,
+                      AppSizes.s16,
+                      AppSizes.s24,
                       0,
                     ),
                     child: SizedBox(
@@ -73,21 +74,21 @@ class _InfoScreenState extends State<InfoScreen> {
                           NewsButtonType.discounts: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 20,
-                              vertical: AppStyles.s8,
+                              vertical: AppSizes.s8,
                             ),
                             child: const Text(
                               "Акции",
-                              style: TextStyle(fontSize: AppStyles.s14),
+                              style: TextStyle(fontSize: AppSizes.s14),
                             ),
                           ),
                           NewsButtonType.news: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 20,
-                              vertical: AppStyles.s8,
+                              vertical: AppSizes.s8,
                             ),
                             child: const Text(
                               "Новости",
-                              style: TextStyle(fontSize: AppStyles.s14),
+                              style: TextStyle(fontSize: AppSizes.s14),
                             ),
                           ),
                         },
@@ -99,10 +100,10 @@ class _InfoScreenState extends State<InfoScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: AppStyles.s24),
+                  const SizedBox(height: AppSizes.s24),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: AppStyles.s24,
+                      horizontal: AppSizes.s24,
                     ),
                     child: _buildContentList(),
                   ),
@@ -120,11 +121,11 @@ class _InfoScreenState extends State<InfoScreen> {
 
     if (filteredData.isEmpty) {
       return const Padding(
-        padding: EdgeInsets.symmetric(vertical: AppStyles.s24),
+        padding: EdgeInsets.symmetric(vertical: AppSizes.s24),
         child: Center(
           child: Text(
             "Нет данных",
-            style: TextStyle(color: AppStyles.textLiteGrey),
+            style: TextStyle(color: AppColors.textLiteGrey),
           ),
         ),
       );
@@ -133,7 +134,7 @@ class _InfoScreenState extends State<InfoScreen> {
     return Column(
       children: filteredData.map((item) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: AppStyles.s8),
+          padding: const EdgeInsets.only(bottom: AppSizes.s8),
           child: NewsCard(
             onTap: () {
               _showCupertinoBottomSheet(context, item);

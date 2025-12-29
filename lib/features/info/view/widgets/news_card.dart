@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 
 class NewsCard extends StatelessWidget {
   final String image;
@@ -21,16 +22,16 @@ class NewsCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: AppStyles.buttonYellow,
-          borderRadius: BorderRadius.circular(AppStyles.radius),
+          color: AppColors.buttonYellow,
+          borderRadius: BorderRadius.circular(AppSizes.radius),
         ),
         height: 96,
-        padding: const EdgeInsets.all(AppStyles.s16),
+        padding: const EdgeInsets.all(AppSizes.s16),
         child: Row(
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppStyles.radius),
+                borderRadius: BorderRadius.circular(AppSizes.radius),
               ),
               child: Image.asset(
                 image,
@@ -39,7 +40,7 @@ class NewsCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(width: AppStyles.s16),
+            const SizedBox(width: AppSizes.s16),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +49,7 @@ class NewsCard extends StatelessWidget {
                   Text(
                     title,
                     style: const TextStyle(
-                      fontSize: AppStyles.s16,
+                      fontSize: AppSizes.s16,
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
@@ -59,9 +60,9 @@ class NewsCard extends StatelessWidget {
                   Text(
                     date,
                     style: TextStyle(
-                      fontSize: AppStyles.s12,
+                      fontSize: AppSizes.s12,
                       fontWeight: FontWeight.w300,
-                      color: AppStyles.text.withValues(alpha: 0.8),
+                      color: AppColors.text.withValues(alpha: 0.8),
                     ),
                   ),
                 ],

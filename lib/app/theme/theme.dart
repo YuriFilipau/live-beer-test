@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 
 ThemeData buildTheme() {
   final base = ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: AppStyles.buttonYellow,
+    colorSchemeSeed: AppColors.buttonYellow,
     brightness: Brightness.light,
   );
 
   return base.copyWith(
-    scaffoldBackgroundColor: AppStyles.bgGrey,
+    scaffoldBackgroundColor: AppColors.bgGrey,
     textTheme: base.textTheme.apply(
-      bodyColor: AppStyles.text,
-      displayColor: AppStyles.text,
+      bodyColor: AppColors.text,
+      displayColor: AppColors.text,
     ),
     cardTheme: const CardThemeData(
       elevation: 10,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(AppStyles.radius),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(AppSizes.radius)),
       ),
     ),
   );

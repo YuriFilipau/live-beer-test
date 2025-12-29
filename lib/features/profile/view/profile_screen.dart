@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 import 'package:live_beer/shared/widgets/button.dart';
 import 'package:live_beer/shared/widgets/text_input_field.dart';
@@ -28,23 +29,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppStyles.bgWhite,
+      backgroundColor: AppColors.bgWhite,
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: AppStyles.s24,
-          vertical: AppStyles.s16,
+          horizontal: AppSizes.s24,
+          vertical: AppSizes.s16,
         ),
-        color: AppStyles.bgWhite,
+        color: AppColors.bgWhite,
         child: Column(
-          spacing: AppStyles.s8,
+          spacing: AppSizes.s8,
           mainAxisSize: MainAxisSize.min,
           children: [
             Button(title: "Сохранить", onTap: () {}),
             const Text(
               "Версия приложения 1.0.7",
               style: TextStyle(
-                color: AppStyles.textLiteGrey,
-                fontSize: AppStyles.s14,
+                color: AppColors.textLiteGrey,
+                fontSize: AppSizes.s14,
                 fontWeight: FontWeight.w400,
               ),
               textAlign: TextAlign.center,
@@ -71,19 +72,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SingleChildScrollView(
             padding: const EdgeInsets.only(top: 78),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppStyles.s24),
+              padding: const EdgeInsets.symmetric(horizontal: AppSizes.s24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
                     "Профиль",
                     style: TextStyle(
-                      fontSize: AppStyles.s36,
+                      fontSize: AppSizes.s36,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: AppStyles.s16),
+                    padding: const EdgeInsets.only(top: AppSizes.s16),
                     child: TextInputField(
                       title: "Ваше имя",
                       controller: nameController,
@@ -97,7 +98,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: AppStyles.s8),
+                    padding: const EdgeInsets.symmetric(vertical: AppSizes.s8),
                     child: TextInputField(
                       title: "Дата рождения",
                       controller: birthdayController,
@@ -120,8 +121,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: AppStyles.s8,
-                      bottom: AppStyles.s6,
+                      top: AppSizes.s8,
+                      bottom: AppSizes.s6,
                     ),
                     child: TextInputField(
                       title: "Номер телефона",
@@ -152,8 +153,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
-                        color: AppStyles.textLiteGrey,
-                        fontSize: AppStyles.s14,
+                        color: AppColors.textLiteGrey,
+                        fontSize: AppSizes.s14,
                       ),
                       children: [
                         const TextSpan(
@@ -167,8 +168,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: const Text(
                               "тех.поддержку",
                               style: TextStyle(
-                                color: AppStyles.textLink,
-                                fontSize: AppStyles.s14,
+                                color: AppColors.textLink,
+                                fontSize: AppSizes.s14,
                               ),
                             ),
                           ),
@@ -177,10 +178,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   const Padding(
-                    padding: EdgeInsets.symmetric(vertical: AppStyles.s24),
+                    padding: EdgeInsets.symmetric(vertical: AppSizes.s24),
                     child: Divider(
-                      color: AppStyles.profileLargeDivider,
-                      thickness: AppStyles.s8,
+                      color: AppColors.profileLargeDivider,
+                      thickness: AppSizes.s8,
                     ),
                   ),
                   Row(
@@ -189,12 +190,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const Text(
                         "Смс-уведомления",
                         style: TextStyle(
-                          fontSize: AppStyles.s18,
+                          fontSize: AppSizes.s18,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       CupertinoSwitch(
-                        activeTrackColor: AppStyles.textLink,
+                        activeTrackColor: AppColors.textLink,
                         value: isSelected,
                         onChanged: (bool? value) {
                           setState(() {
@@ -205,9 +206,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(bottom: AppStyles.s8),
+                    padding: EdgeInsets.only(bottom: AppSizes.s8),
                     child: Divider(
-                      color: AppStyles.profileDivider,
+                      color: AppColors.profileDivider,
                       thickness: 0.5,
                     ),
                   ),
@@ -217,7 +218,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const Text(
                         "Выйти из аккаунта",
                         style: TextStyle(
-                          fontSize: AppStyles.s18,
+                          fontSize: AppSizes.s18,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -229,7 +230,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                   const Divider(
-                    color: AppStyles.profileDivider,
+                    color: AppColors.profileDivider,
                     thickness: 0.5,
                   ),
                 ],

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 
 class BottomNavigationScaffold extends StatelessWidget {
@@ -18,13 +19,13 @@ class BottomNavigationScaffold extends StatelessWidget {
       body: shell,
       bottomNavigationBar: Container(
         padding: const EdgeInsets.fromLTRB(
-          AppStyles.s24,
-          AppStyles.s12,
-          AppStyles.s24,
+          AppSizes.s24,
+          AppSizes.s12,
+          AppSizes.s24,
           0,
         ),
         height: 95,
-        color: AppStyles.bgDarkGrey,
+        color: AppColors.bgDarkGrey,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,20 +87,20 @@ class _NavigationItem extends StatelessWidget {
               icon,
               colorFilter: ColorFilter.mode(
                 isSelected
-                    ? AppStyles.buttonYellow
-                    : AppStyles.bgWhite.withValues(alpha: 0.5),
+                    ? AppColors.buttonYellow
+                    : AppColors.bgWhite.withValues(alpha: 0.5),
                 BlendMode.srcIn,
               ),
-              width: AppStyles.s24,
-              height: AppStyles.s24,
+              width: AppSizes.s24,
+              height: AppSizes.s24,
             ),
             Text(
               title,
               style: TextStyle(
-                fontSize: AppStyles.s12,
+                fontSize: AppSizes.s12,
                 color: isSelected
-                    ? AppStyles.buttonYellow
-                    : AppStyles.bgWhite.withValues(alpha: 0.5),
+                    ? AppColors.buttonYellow
+                    : AppColors.bgWhite.withValues(alpha: 0.5),
               ),
             ),
           ],

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:live_beer/app/constants/enums.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/app/data/test_data/test_news.dart';
 import 'package:live_beer/app/router/router.dart';
 import 'package:live_beer/features/home/view/widgets/beer_reward_card.dart';
@@ -22,14 +23,14 @@ class HomeScreen extends StatelessWidget {
     final filteredData = _getCurrentData();
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppStyles.bgGrey,
+        backgroundColor: AppColors.bgGrey,
         body: SingleChildScrollView(
           child: Column(
             children: [
               const Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: AppStyles.s16,
-                  vertical: AppStyles.s8,
+                  horizontal: AppSizes.s16,
+                  vertical: AppSizes.s8,
                 ),
                 child: WelcomeCard(
                   barcodeData: "1234567010356443",
@@ -38,17 +39,17 @@ class HomeScreen extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.only(
-                  left: AppStyles.s16,
-                  right: AppStyles.s16,
-                  bottom: AppStyles.s6,
+                  left: AppSizes.s16,
+                  right: AppSizes.s16,
+                  bottom: AppSizes.s6,
                 ),
                 child: BeerRewardCard(filledLiters: 8, totalLiters: 10),
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: AppStyles.s16,
-                  right: AppStyles.s16,
-                  bottom: AppStyles.s24,
+                  left: AppSizes.s16,
+                  right: AppSizes.s16,
+                  bottom: AppSizes.s24,
                 ),
                 child: PointsRewardCard(
                   score: 3017,
@@ -64,9 +65,9 @@ class HomeScreen extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: AppStyles.s16,
-                  right: AppStyles.s16,
-                  bottom: AppStyles.s16,
+                  left: AppSizes.s16,
+                  right: AppSizes.s16,
+                  bottom: AppSizes.s16,
                 ),
                 child: GestureDetector(
                   onTap: () {
@@ -78,24 +79,24 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         "Будь в курсе",
                         style: TextStyle(
-                          fontSize: AppStyles.s24,
+                          fontSize: AppSizes.s24,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      Icon(Icons.arrow_forward, size: AppStyles.s24),
+                      Icon(Icons.arrow_forward, size: AppSizes.s24),
                     ],
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: AppStyles.s16,
-                  bottom: AppStyles.s16,
+                  left: AppSizes.s16,
+                  bottom: AppSizes.s16,
                 ),
                 child: SizedBox(
                   height: 132,
                   child: ListView.separated(
-                    padding: const EdgeInsets.only(right: AppStyles.s16),
+                    padding: const EdgeInsets.only(right: AppSizes.s16),
                     scrollDirection: Axis.horizontal,
                     itemCount: filteredData.length,
                     itemBuilder: (context, index) {
@@ -108,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return const SizedBox(width: AppStyles.s8);
+                      return const SizedBox(width: AppSizes.s8);
                     },
                   ),
                 ),

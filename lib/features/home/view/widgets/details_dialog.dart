@@ -2,7 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 import 'package:live_beer/shared/widgets/button.dart';
 
@@ -17,31 +18,34 @@ class DetailsDialog extends StatelessWidget {
         children: [
           const Expanded(child: SizedBox()),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppStyles.s24),
+            padding: const EdgeInsets.symmetric(horizontal: AppSizes.s24),
             child: Container(
               decoration: BoxDecoration(
-                color: AppStyles.bgGrey,
-                borderRadius: BorderRadius.circular(AppStyles.radius),
+                color: AppColors.bgGrey,
+                borderRadius: BorderRadius.circular(AppSizes.radius),
               ),
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.all(AppStyles.s24),
+                    padding: EdgeInsets.all(AppSizes.s24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           "Правила накопления баллов и литров",
-                          style: TextStyle(fontSize: AppStyles.s24, height: 1.3),
+                          style: TextStyle(fontSize: AppSizes.s24, height: 1.3),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: AppStyles.s16, bottom: AppStyles.s8),
+                          padding: EdgeInsets.only(
+                            top: AppSizes.s16,
+                            bottom: AppSizes.s8,
+                          ),
                           child: Text(
                             "1 балл = 1 рубль",
                             style: TextStyle(
-                              fontSize: AppStyles.s16,
+                              fontSize: AppSizes.s16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -50,7 +54,7 @@ class DetailsDialog extends StatelessWidget {
                           "Посещайте магазины сети LiveBeer"
                           " и получайте процент накоплений от суммы покупки."
                           " Обязательно предъявите карту, до начала оплаты.",
-                          style: TextStyle(fontSize: AppStyles.s16, height: 1.8),
+                          style: TextStyle(fontSize: AppSizes.s16, height: 1.8),
                         ),
                       ],
                     ),
@@ -67,7 +71,10 @@ class DetailsDialog extends StatelessWidget {
           const Expanded(child: SizedBox()),
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(left: AppStyles.s24, right: AppStyles.s24),
+              padding: const EdgeInsets.only(
+                left: AppSizes.s24,
+                right: AppSizes.s24,
+              ),
               child: Button(
                 title: "Закрыть",
                 onTap: () => Navigator.of(context).pop(),

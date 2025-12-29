@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 
 class Button extends StatelessWidget {
   final String title;
@@ -13,15 +14,15 @@ class Button extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: AppStyles.buttonYellow,
-          borderRadius: BorderRadius.circular(AppStyles.radius),
+          color: AppColors.buttonYellow,
+          borderRadius: BorderRadius.circular(AppSizes.radius),
         ),
         height: 56,
         child: Center(
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: AppStyles.s16,
+              fontSize: AppSizes.s16,
               fontWeight: FontWeight.w600,
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 
 class TextInputField extends StatefulWidget {
   final String title;
@@ -98,15 +99,15 @@ class _TextInputFieldState extends State<TextInputField> {
         Text(
           widget.title,
           style: const TextStyle(
-            color: AppStyles.textLiteGrey,
-            fontSize: AppStyles.s14,
+            color: AppColors.textLiteGrey,
+            fontSize: AppSizes.s14,
           ),
         ),
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppStyles.radius),
+            borderRadius: BorderRadius.circular(AppSizes.radius),
             border: Border.all(color: _getBorderColor()),
-            color: widget.enabled ? Colors.white : AppStyles.enabledBorder,
+            color: widget.enabled ? Colors.white : AppColors.enabledBorder,
           ),
           child: TextField(
             controller: _controller,
@@ -126,20 +127,20 @@ class _TextInputFieldState extends State<TextInputField> {
             autofocus: widget.autoFocus,
             textInputAction: widget.textInputAction,
             style: const TextStyle(
-              fontSize: AppStyles.s17,
-              color: AppStyles.text,
+              fontSize: AppSizes.s17,
+              color: AppColors.text,
             ),
             decoration: InputDecoration(
               hintText: widget.hintText,
               prefixIcon: widget.prefixIcon,
               suffixIcon: widget.suffixIcon,
               contentPadding:
-                  widget.contentPadding ?? const EdgeInsets.all(AppStyles.s14),
+                  widget.contentPadding ?? const EdgeInsets.all(AppSizes.s14),
               border: InputBorder.none,
               enabledBorder: InputBorder.none,
               focusedBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
-              hintStyle: const TextStyle(color: AppStyles.textLiteGrey),
+              hintStyle: const TextStyle(color: AppColors.textLiteGrey),
               counterText: '',
             ),
           ),
@@ -155,20 +156,20 @@ class _TextInputFieldState extends State<TextInputField> {
 
   Color _getBorderColor() {
     if (widget.hasError || _errorText != null) {
-      return AppStyles.errorBorder;
+      return AppColors.errorBorder;
     }
     if (_isFocused) {
-      return AppStyles.focusedBorder;
+      return AppColors.focusedBorder;
     }
-    return AppStyles.enabledBorder;
+    return AppColors.enabledBorder;
   }
 
   Widget _buildErrorText(String error) {
     return Text(
       error,
       style: const TextStyle(
-        color: AppStyles.errorBorder,
-        fontSize: AppStyles.s14,
+        color: AppColors.errorBorder,
+        fontSize: AppSizes.s14,
       ),
     );
   }

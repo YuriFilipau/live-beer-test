@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 
 class PointsRewardCard extends StatelessWidget {
@@ -12,11 +13,11 @@ class PointsRewardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: AppStyles.s24),
+      padding: const EdgeInsets.only(left: AppSizes.s24),
       height: 126,
       decoration: BoxDecoration(
         color: Colors.black,
-        borderRadius: BorderRadius.circular(AppStyles.radius),
+        borderRadius: BorderRadius.circular(AppSizes.radius),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,8 +31,8 @@ class PointsRewardCard extends StatelessWidget {
                 Text(
                   score.toString(),
                   style: const TextStyle(
-                    color: AppStyles.bgWhite,
-                    fontSize: AppStyles.s32,
+                    color: AppColors.bgWhite,
+                    fontSize: AppSizes.s32,
                     fontWeight: FontWeight.w800,
                     height: 0.75,
                   ),
@@ -39,8 +40,8 @@ class PointsRewardCard extends StatelessWidget {
                 const Text(
                   "Накоплено баллов",
                   style: TextStyle(
-                    color: AppStyles.bgWhite,
-                    fontSize: AppStyles.s16,
+                    color: AppColors.bgWhite,
+                    fontSize: AppSizes.s16,
                     fontWeight: FontWeight.w700,
                     height: 2,
                   ),
@@ -49,7 +50,7 @@ class PointsRewardCard extends StatelessWidget {
                   "Собирайте баллы и получайте бонусы",
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.7),
-                    fontSize: AppStyles.s14,
+                    fontSize: AppSizes.s14,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,

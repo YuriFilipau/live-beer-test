@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/features/home/view/widgets/barcode_card.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 
@@ -22,8 +23,8 @@ class WelcomeCard extends StatelessWidget {
           height: 85,
           child: ClipRRect(
             borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(AppStyles.radius),
-              topRight: Radius.circular(AppStyles.radius),
+              topLeft: Radius.circular(AppSizes.radius),
+              topRight: Radius.circular(AppSizes.radius),
             ),
             child: Stack(
               children: [
@@ -35,13 +36,13 @@ class WelcomeCard extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: AppStyles.buttonYellow.withValues(alpha: 0.9),
+                    color: AppColors.buttonYellow.withValues(alpha: 0.9),
                   ),
                   child: Center(
                     child: Text(
                       "Привет, $userName!",
                       style: const TextStyle(
-                        fontSize: AppStyles.s24,
+                        fontSize: AppSizes.s24,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -53,10 +54,10 @@ class WelcomeCard extends StatelessWidget {
         ),
         Container(
           decoration: const BoxDecoration(
-            color: AppStyles.bgWhite,
+            color: AppColors.bgWhite,
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(AppStyles.radius),
-              bottomRight: Radius.circular(AppStyles.radius),
+              bottomLeft: Radius.circular(AppSizes.radius),
+              bottomRight: Radius.circular(AppSizes.radius),
             ),
           ),
           height: 105,

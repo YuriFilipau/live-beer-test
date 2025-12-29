@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:live_beer/app/constants/enums.dart';
-import 'package:live_beer/app/constants/app_styles.dart';
+import 'package:live_beer/app/constants/colors.dart';
+import 'package:live_beer/app/constants/sizes.dart';
 import 'package:live_beer/gen/assets.gen.dart';
 
 class NewsButton extends StatelessWidget {
@@ -26,13 +27,13 @@ class NewsButton extends StatelessWidget {
         width: 138,
         height: 132,
         decoration: BoxDecoration(
-          color: AppStyles.buttonYellow,
-          borderRadius: BorderRadius.circular(AppStyles.radius),
+          color: AppColors.buttonYellow,
+          borderRadius: BorderRadius.circular(AppSizes.radius),
         ),
         child: Stack(
           children: [
-             Padding(
-              padding: const EdgeInsets.all(AppStyles.s16),
+            Padding(
+              padding: const EdgeInsets.all(AppSizes.s16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -41,20 +42,20 @@ class NewsButton extends StatelessWidget {
                       title,
                       maxLines: 4,
                       style: const TextStyle(
-                        fontSize: AppStyles.s14,
+                        fontSize: AppSizes.s14,
                         fontWeight: FontWeight.w600,
-                        color: AppStyles.text,
+                        color: AppColors.text,
                         height: 1.3,
-                        overflow: TextOverflow.ellipsis
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),
                   Text(
                     date,
                     style: const TextStyle(
-                      fontSize: AppStyles.s12,
+                      fontSize: AppSizes.s12,
                       fontWeight: FontWeight.w300,
-                      color: AppStyles.text,
+                      color: AppColors.text,
                     ),
                   ),
                 ],
