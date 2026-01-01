@@ -20,7 +20,7 @@ class _InfoScreenState extends State<InfoScreen> {
   NewsButtonType? _selectedType = NewsButtonType.discounts;
 
   List<Map<String, dynamic>> _getCurrentData() {
-    return NewsData.getMapByType(_selectedType!);
+    return NewsData.getMapByType(_selectedType ?? NewsButtonType.discounts);
   }
 
   @override
@@ -100,10 +100,12 @@ class _InfoScreenState extends State<InfoScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: AppSizes.s24),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSizes.s24,
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSizes.s24,
+                      AppSizes.s20,
+                      AppSizes.s24,
+                      AppSizes.s8,
                     ),
                     child: _buildContentList(),
                   ),
@@ -152,9 +154,9 @@ class _InfoScreenState extends State<InfoScreen> {
     BuildContext context,
     Map<String, dynamic> item,
   ) {
-    showCupertinoModalPopup<void>(
+    showCupertinoModalPopup(
       context: context,
-      barrierColor: Colors.black.withValues(alpha: 0.4),
+      barrierColor: Colors.black.withValues(alpha: 0.5),
       builder: (BuildContext context) {
         return ModalBottomSheet(
           title: item['title'],

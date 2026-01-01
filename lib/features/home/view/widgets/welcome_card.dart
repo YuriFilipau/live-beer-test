@@ -53,6 +53,10 @@ class WelcomeCard extends StatelessWidget {
           ),
         ),
         Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSizes.s24,
+            vertical: AppSizes.s16,
+          ),
           decoration: const BoxDecoration(
             color: AppColors.bgWhite,
             borderRadius: BorderRadius.only(
@@ -61,8 +65,30 @@ class WelcomeCard extends StatelessWidget {
             ),
           ),
           height: 105,
-          width: 400,
-          child: Center(child: BarcodeCard(data: barcodeData)),
+          child: Center(
+            child: Column(
+              spacing: AppSizes.s6,
+              children: [
+                BarcodeCard(data: barcodeData),
+                // or just use drawText from the barcode package, without splitting
+                Row(
+                  children: barcodeData
+                      .split('')
+                      .map(
+                        (char) => Expanded(
+                          child: Center(
+                            child: Text(
+                              char,
+                              style: const TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );
